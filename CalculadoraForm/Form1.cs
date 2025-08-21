@@ -21,7 +21,21 @@ namespace CalculadoraForm
 
         private void btnigual_Click(object sender, EventArgs e)
         {
-            // Implementar depois...
+            try
+            {
+                DataTable dt = new DataTable();
+                txbTela.Text = dt.Compute(txbTela.Text, "").ToString();
+            }
+            catch
+            {
+                   MessageBox.Show("Erro");
+            }
+            if (txbTela.Text == "∞")
+            {
+               btnLimpar.PerformClick();
+                MessageBox.Show("Deu erro");
+            }
+
         }
         private void numero_Click(object sender, EventArgs e)
         {
@@ -51,5 +65,14 @@ namespace CalculadoraForm
 
         }
         
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            //Limpar a tela:
+            txbTela.Text = "";
+            //  Voltar o operador clicado para true:
+            operadorClicado = true;
+
+        }
+
     }
 }
